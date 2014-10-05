@@ -30,7 +30,7 @@ public class Text { //a collection of sentences
             rawText = sb.toString();
             //this is rough, splits on period, exclamation, question mark
             String[] rawSentences = rawText.split("(?<=(!+|\\.+|\\?+))");
-            
+            //if it is one sentence with no terminals, consider that as well
             Sentencizer sentencizer = new Sentencizer(rawSentences);
             
             while (sentencizer.hasNext()){
@@ -61,7 +61,13 @@ public class Text { //a collection of sentences
             System.out.println(sentences.get(i));
         }
     }
+    public Sentence getSentence(int i){
+        return sentences.get(i);
+    }
     
+    public ArrayList<Sentence> getSentences(){
+        return sentences;
+    }
     public Sentence getNextSentence(){
         return sentences.get(index++);
     }

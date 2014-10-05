@@ -29,6 +29,10 @@ public class Token {
 	
 	public Token(){ //default
 	}
+        
+        public String toString(){
+            return this.value;
+        }
 	
     public static String categoryToString(TokenCategory cat){ //turns expected enum into string
         switch (cat) { 

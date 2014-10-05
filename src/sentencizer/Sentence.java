@@ -47,6 +47,10 @@ public class Sentence{
         return tokens.get(index++);
     }
     
+    public ArrayList<Token> getTokens(){
+        return tokens;
+    }
+    
     public SentenceType getType(){
 	return type;
     }
