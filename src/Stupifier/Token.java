@@ -1,4 +1,4 @@
-package sentencizer;
+package Stupifier;
 
 public class Token {
 	public enum TokenCategory {WORD, TERMINAL, SYMBOL, NUMERAL, INVALID}
@@ -31,7 +31,7 @@ public class Token {
 	}
         
         public String toString(){
-            return this.value;
+            return this.value + " (" + this.category +")";
         }
 	
     public static String categoryToString(TokenCategory cat){ //turns expected enum into string

@@ -1,15 +1,11 @@
 
-package sentencizer;
+package Stupifier;
 
 public class Tokenizer { //aka a lexer
 
     private int index = 0;
     private String rawText;
     private char ch;
-    
-    public static void main(String[] args) {
-        
-    }
     
     public Tokenizer(String rawText){
         this.index = 0;
@@ -18,10 +14,16 @@ public class Tokenizer { //aka a lexer
     }
     
     public Token nextToken(){
-        String currentToken = "" + ch;
+        System.out.println("rawtext: " + rawText + " index: " + index);
+        System.out.println();
+        String currentToken = "";
         String category = "";
         do{
+            System.out.println("ch: " + ch);
+            System.out.println("category: " + category);
+            System.out.println("is whitespace? " + Character.isWhitespace(ch));
             if (Character.isWhitespace(ch)){ //CUT IT
+                ch = nextChar();
                 return createNewToken(currentToken, category);
             }
             else if (ch == '.' || ch == '?' || ch == '!'){
@@ -69,6 +71,7 @@ public class Tokenizer { //aka a lexer
     }
     
     public Token createNewToken(String cToken, String category){
+        System.out.println("token to be created: " + cToken);
         if (category.equalsIgnoreCase("word")){
             return new Token(cToken, Token.TokenCategory.WORD);
         }

@@ -1,4 +1,4 @@
-package sentencizer;
+package Stupifier;
 
 import java.util.ArrayList;
 
@@ -20,11 +20,15 @@ public class Sentence{
         this.rawText = raw;
         this.type = type;
         this.index = 0;
-        
+        System.out.println("sentence crated with type: " + type);
+        System.out.println("time to tokenize");
         Tokenizer tokenizer = new Tokenizer(raw);
-            
+        System.out.println("tokenizer created");
+          
         while (tokenizer.hasNext()){
-            tokens.add(tokenizer.nextToken());
+            Token nextToken = tokenizer.nextToken();
+            System.out.println("Token in sentence: " + nextToken);
+            tokens.add(nextToken);
         }
     }
     

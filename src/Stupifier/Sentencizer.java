@@ -1,14 +1,11 @@
 
-package sentencizer;
+package Stupifier;
 
 public class Sentencizer {
 
     private int index = 0;
     private String[] rawSentences;
     
-    public static void main(String[] args) {
-        //sentencization, tokenization, stupification
-    }
     public Sentencizer(){
         
     }
@@ -20,6 +17,7 @@ public class Sentencizer {
     
     public Sentence nextSentence(){
         String rawSentence = nextRawSentence();
+        System.out.println("raw sentence: " + rawSentence);
         if (rawSentence.contains(".")){
            return new Sentence(rawSentence, Sentence.SentenceType.IMPERATIVE_DECLARATIVE); 
         }

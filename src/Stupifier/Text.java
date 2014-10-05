@@ -1,4 +1,4 @@
-package sentencizer;
+package Stupifier;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,19 +21,26 @@ public class Text { //a collection of sentences
         this.index = 0;
         try {
             BufferedReader input = new BufferedReader(new FileReader(fileName));
-            
+            System.out.println("file read");
             StringBuilder sb = new StringBuilder();
             String s;
             while ((s = input.readLine()) != null ) {
                 sb.append(s);
             }
             rawText = sb.toString();
+            System.out.println("Rawtext: " + rawText);
             //this is rough, splits on period, exclamation, question mark
             String[] rawSentences = rawText.split("(?<=(!+|\\.+|\\?+))");
+            for (int i = 0; i < rawSentences.length; i++){
+                rawSentences[i] = rawSentences[i].trim(); //trim
+                System.out.println(i + ": " + rawSentences[i]);
+            }
             //if it is one sentence with no terminals, consider that as well
             Sentencizer sentencizer = new Sentencizer(rawSentences);
+            System.out.println("Sentencizer created");
             
             while (sentencizer.hasNext()){
+                System.out.println("adding sentence " + sentencizer.getIndex());
                 sentences.add(sentencizer.nextSentence());
             }  
         }
@@ -59,6 +66,15 @@ public class Text { //a collection of sentences
     public void printRawSentences(){
         for (int i = 0; i < sentences.size(); i++){
             System.out.println(sentences.get(i));
+        }
+    }
+    
+    public void printTokens(){
+        for (int i = 0; i < sentences.size(); i++){
+            ArrayList<Token> tokens =  sentences.get(i).getTokens();
+            for (int j = 0; j < tokens.size(); j++){
+                System.out.println(tokens.get(j) + " ");
+            }
         }
     }
     public Sentence getSentence(int i){

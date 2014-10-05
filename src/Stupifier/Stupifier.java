@@ -1,4 +1,4 @@
-package sentencizer;
+package Stupifier;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class Stupifier{
         for (int i = 0; i < sentences.size(); i++){
             ArrayList<Token> tokens = sentences.get(i).getTokens();
             for (int j = 0; j < tokens.size(); j++){
-                Token currentToken = tokens.get(i);
+                Token currentToken = tokens.get(j);
                 if (currentToken.categoryToString(currentToken.getCategory()).equalsIgnoreCase("word")){
                     String newWord = findEasierSynonym(currentToken.getValue());
                     System.out.println("Stupified " + currentToken + " to " + newWord);
