@@ -56,6 +56,12 @@ public class Text { //a collection of sentences
         return index;
     }
     
+    public void printRawSentences(){
+        for (int i = 0; i < sentences.size(); i++){
+            System.out.println(sentences.get(i));
+        }
+    }
+    
     public Sentence getNextSentence(){
         return sentences.get(index++);
     }

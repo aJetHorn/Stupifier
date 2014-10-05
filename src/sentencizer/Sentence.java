@@ -7,17 +7,17 @@ public class Sentence{
     
     private ArrayList<Token> tokens = new ArrayList<>();
     private SentenceType type; //type
-    private String raw;
+    private String rawText;
     private int index;
     
     public Sentence(){
        
     }
     public Sentence(String raw){
-        this.raw = raw;
+        this.rawText = raw;
     }
     public Sentence(String raw, SentenceType type){
-        this.raw = raw;
+        this.rawText = raw;
         this.type = type;
         this.index = 0;
         
@@ -49,6 +49,21 @@ public class Sentence{
     
     public SentenceType getType(){
 	return type;
+    }
+    
+    public void printTokens(){
+        for (int i = 0; i < tokens.size(); i++){
+            System.out.println(tokens.get(i));
+        }
+    }
+    
+    public void printRaw(){
+        System.out.println(rawText);
+    }
+    
+    @Override
+    public String toString(){
+        return rawText;
     }
     
     public void setSentenceType(SentenceType type){
