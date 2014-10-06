@@ -1,10 +1,17 @@
 package Stupifier;
 
-public class Word{
-    private String category = "";
-    private String contents = "";
+public class Word extends Token{
+    //private String category = "";
+    private String value = "";
     private static final String[] ARTICLES = {"the", "a", "an", "some"};
-    private static final String[] PREPOSITIONS = {}; //fill this out
+    private static final String[] PREPOSITIONS = 
+    {"about","above","across","after","against","along","among",
+        "around","at","before","behind","below","beneath","beside",
+        "between","by","down","during","except","for","from","in",
+        "in front of","inside","instead of","into","like","near","of",
+        "off","on","onto","on top of","out of","outside","over","past",
+        "since","through","to","toward","under","underneath","until","up",
+        "upon","with","within","without"}; //fill this out
     private static final String[] COORDINATING_CONJUNCTIONS = {"and", "but", "or", "nor", "yet", "so"};
     private static final String[] PERSONAL_PRONOUNS = 
         {"I", "me", "we", "us", "you", "she", "her", "it", "he", "him", "they", "them"};
@@ -29,51 +36,52 @@ public class Word{
     
     
     public Word(String w){
-        this.category = "";
-        this.contents = w;
+        //this.category = "";
+        this.value = w;
         classifyWord();
     }
     
     public String toString(){
-        return contents;
+        return value;
     }
     
     public void classifyWord(){ //finds category
-        if (arrayContains(ARTICLES, contents)){
-            category = "article";
+        if (arrayContains(ARTICLES, value)){
+            setCategory(Token.TokenCategory.ARTICLE);
         }
-        else if (arrayContains(PREPOSITIONS, contents)){
-            category = "preposition";
+        else if (arrayContains(PREPOSITIONS, value)){
+            setCategory(Token.TokenCategory.PREPOSITION);
         }
-        else if (arrayContains(COORDINATING_CONJUNCTIONS, contents)){
-            category = "conjunction";
+        else if (arrayContains(COORDINATING_CONJUNCTIONS, value)){
+            setCategory(Token.TokenCategory.CONJUNCTION);
         }
-        else if (arrayContains(PERSONAL_PRONOUNS, contents)){
-            category = "pronoun";
+        //yes, the redundancy is purposeful
+        else if (arrayContains(PERSONAL_PRONOUNS, value)){
+            setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(RELATIVE_PRONOUNS, contents)){
-            category = "pronoun";
+        else if (arrayContains(RELATIVE_PRONOUNS, value)){
+            setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(DEMONSTRATIVE_PRONOUNS, contents)){
-            category = "pronoun";
+        else if (arrayContains(DEMONSTRATIVE_PRONOUNS, value)){
+            setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(INDEFINITE_PRONOUNS, contents)){
-            category = "pronoun";
+        else if (arrayContains(INDEFINITE_PRONOUNS, value)){
+            setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(REFLEXIVE_PRONOUNS, contents)){
-            category = "pronoun";
+        else if (arrayContains(REFLEXIVE_PRONOUNS, value)){
+            setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(INTERROGATIVE_PRONOUNS, contents)){
-            category = "pronoun";
+        else if (arrayContains(INTERROGATIVE_PRONOUNS, value)){
+            setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(POSSESSIVE_PRONOUNS, contents)){
-            category = "pronoun";
+        else if (arrayContains(POSSESSIVE_PRONOUNS, value)){
+           setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (startsWithUppercase(contents)){
-            category = "proper_noun";
+        else if (startsWithUppercase(value)){
+            setCategory(Token.TokenCategory.PROPER_NOUN);
         }
         else{
-            category = "noun_or_verb";
+            setCategory(Token.TokenCategory.ADVERB_ADJECTIVE_NOUN_VERB);
         }
     }
     
@@ -94,9 +102,5 @@ public class Word{
             String firstChar = s.substring(0,1);
             return firstChar.equals(firstChar.toUpperCase());
         }
-    }
-    
-    public String getCategory(){
-        return category;
     }
 }

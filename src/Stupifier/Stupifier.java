@@ -18,7 +18,7 @@ public class Stupifier{
             ArrayList<Token> tokens = sentences.get(i).getTokens();
             for (int j = 0; j < tokens.size(); j++){
                 Token currentToken = tokens.get(j);
-                if (currentToken.categoryToString(currentToken.getCategory()).equalsIgnoreCase("word")){
+                if (currentToken.categoryToString(currentToken.getCategory()).equalsIgnoreCase("Adverb_Adjective_Noun_Verb")){
                     String newWord = findEasierSynonym(currentToken.getValue());
                     System.out.println("Stupified " + currentToken + " to " + newWord);
                     currentToken.setValue(newWord);
