@@ -56,7 +56,7 @@ public class Sentence{
     }
     
     public SentenceType getType(){
-	return type;
+ return type;
     }
     
     public void printTokens(){
@@ -64,7 +64,6 @@ public class Sentence{
             System.out.println(tokens.get(i));
         }
     }
-    
     public void printRaw(){
         System.out.println(rawText);
     }
@@ -75,6 +74,6 @@ public class Sentence{
     }
     
     public void setSentenceType(SentenceType type){
-	this.type = type;
+ this.type = type;
     }
 }

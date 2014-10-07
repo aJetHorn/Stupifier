@@ -1,6 +1,7 @@
 package Stupifier;
 
 public class Word extends Token{
+    Nouns n = new Nouns("nouns.txt");
     private static final String[] ARTICLES = {"the", "a", "an", "some"};
     private static final String[] PREPOSITIONS = 
     {"about","above","across","after","against","along","among",
@@ -74,11 +75,14 @@ public class Word extends Token{
         else if (arrayContains(POSSESSIVE_PRONOUNS, getValue())){
            setCategory(Token.TokenCategory.PRONOUN);
         }
+        else if(n.isWordOnList(getValue())){
+            setCategory(Token.TokenCategory.NOUN);
+        }
         else if (startsWithUppercase(getValue())){
             setCategory(Token.TokenCategory.PROPER_NOUN);
         }
         else{
-            setCategory(Token.TokenCategory.ADVERB_ADJECTIVE_NOUN_VERB);
+            setCategory(Token.TokenCategory.ADVERB_ADJECTIVE_VERB);
         }
     }
     
