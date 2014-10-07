@@ -1,8 +1,6 @@
 package Stupifier;
 
 public class Word extends Token{
-    //private String category = "";
-    private String value = "";
     private static final String[] ARTICLES = {"the", "a", "an", "some"};
     private static final String[] PREPOSITIONS = 
     {"about","above","across","after","against","along","among",
@@ -36,48 +34,47 @@ public class Word extends Token{
     
     
     public Word(String w){
-        //this.category = "";
-        this.value = w;
+        setValue(w);
         classifyWord();
     }
     
     public String toString(){
-        return value;
+        return getValue();
     }
     
     public void classifyWord(){ //finds category
-        if (arrayContains(ARTICLES, value)){
+        if (arrayContains(ARTICLES, getValue())){
             setCategory(Token.TokenCategory.ARTICLE);
         }
-        else if (arrayContains(PREPOSITIONS, value)){
+        else if (arrayContains(PREPOSITIONS, getValue())){
             setCategory(Token.TokenCategory.PREPOSITION);
         }
-        else if (arrayContains(COORDINATING_CONJUNCTIONS, value)){
+        else if (arrayContains(COORDINATING_CONJUNCTIONS, getValue())){
             setCategory(Token.TokenCategory.CONJUNCTION);
         }
         //yes, the redundancy is purposeful
-        else if (arrayContains(PERSONAL_PRONOUNS, value)){
+        else if (arrayContains(PERSONAL_PRONOUNS, getValue())){
             setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(RELATIVE_PRONOUNS, value)){
+        else if (arrayContains(RELATIVE_PRONOUNS, getValue())){
             setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(DEMONSTRATIVE_PRONOUNS, value)){
+        else if (arrayContains(DEMONSTRATIVE_PRONOUNS, getValue())){
             setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(INDEFINITE_PRONOUNS, value)){
+        else if (arrayContains(INDEFINITE_PRONOUNS, getValue())){
             setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(REFLEXIVE_PRONOUNS, value)){
+        else if (arrayContains(REFLEXIVE_PRONOUNS, getValue())){
             setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(INTERROGATIVE_PRONOUNS, value)){
+        else if (arrayContains(INTERROGATIVE_PRONOUNS, getValue())){
             setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (arrayContains(POSSESSIVE_PRONOUNS, value)){
+        else if (arrayContains(POSSESSIVE_PRONOUNS, getValue())){
            setCategory(Token.TokenCategory.PRONOUN);
         }
-        else if (startsWithUppercase(value)){
+        else if (startsWithUppercase(getValue())){
             setCategory(Token.TokenCategory.PROPER_NOUN);
         }
         else{
