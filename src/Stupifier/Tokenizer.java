@@ -73,7 +73,7 @@ public class Tokenizer { //aka a lexer
     public Token createNewToken(String cToken, String category){
         System.out.println("token to be created: " + cToken);
         if (category.equalsIgnoreCase("word")){
-            return new Token(cToken, Token.TokenCategory.WORD);
+            return new Word(cToken);
         }
         else if (category.equalsIgnoreCase("terminal")){
             return new Token(cToken, Token.TokenCategory.TERMINAL);
