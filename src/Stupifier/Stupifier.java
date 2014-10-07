@@ -31,13 +31,18 @@ public class Stupifier{
     
     public String findEasierSynonym(String s){
         //needs work..
-        //for now, take a random synonym and replace it
+        //for now, takes shortest synonym and replaces it
         System.out.println(s);
         Thesaurus t = new Thesaurus("mthesaur.txt");
         if(t.getSynonyms(s.toLowerCase()) != null){
-        List<String> syn = t.getSynonyms(s.toLowerCase());
-        int ran = (int)(Math.random() * syn.size()) + 0;
-        s = syn.get(ran);
+          List<String> syn = t.getSynonyms(s.toLowerCase());
+          String small = syn.get(0);
+          for(int i = 1; i < syn.size(); i++){
+            if(syn.get(i).length() < small.length()){
+              small = syn.get(i);
+            }
+          }
+          s = small;
         }
         else{
           System.out.println(s + " couldn't be stupified any more");
