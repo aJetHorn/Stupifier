@@ -1,4 +1,3 @@
-
 package Stupifier;
 
 public class Sentencizer {

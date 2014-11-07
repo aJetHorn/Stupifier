@@ -77,6 +77,14 @@ public class Text { //a collection of sentences
             }
         }
     }
+    public void printNewSentence(){
+        for (int i = 0; i < sentences.size(); i++){
+            ArrayList<Token> tokens =  sentences.get(i).getTokens();
+            for (int j = 0; j < tokens.size(); j++){
+                System.out.print(tokens.get(j) + " ");
+            }
+        }
+    }
     public Sentence getSentence(int i){
         return sentences.get(i);
     }
