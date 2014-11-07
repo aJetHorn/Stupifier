@@ -2,18 +2,19 @@ package Stupifier;
 
 public class StupifierExecutor{
     private static final String INPUT_FILE = "text1.txt";
-    
     public static void main(String args[]){
         System.out.println("start..");
         Text text = new Text(INPUT_FILE);
         System.out.println("text object created..");
-        text.printTokens();
+        //text.printTokens();
         Stupifier stupifier = new Stupifier(text);
         System.out.println("stupifier created..");
         stupifier.stupify();
         System.out.println("stupification has occured..");
-        text.printRawSentences();    
-        text.printTokens();
+        text.printRawSentences();
         System.out.println("raw sentences printed..");
+        text.printNewSentence();
+        System.out.println();
+        System.out.println("new sentence printed..");
     }
 }
